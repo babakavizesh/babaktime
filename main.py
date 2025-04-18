@@ -14,7 +14,7 @@ client = TelegramClient('session', api_id, api_hash)
 with client:
     while True:
         now = datetime.now().strftime('%H:%M')
-        name = f"Ali | {now}"  # ← اینجا اسمتو بذار
+        name = f"BbK | {now}"  # ← اینجا اسمتو بذار
         client(functions.account.UpdateProfileRequest(first_name=name))
         print(f"نام بروزرسانی شد: {name}")
         time.sleep(60)
