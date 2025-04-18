@@ -5,8 +5,8 @@ import time
 import os
 
 # اطلاعات تلگرام خودتو اینجا وارد کن
-api_id = int(os.environ.get("API_ID"))  # به نام درست متغیر محیطی تغییر کنه
-api_hash = os.environ.get("API_HASH")   # به نام درست متغیر محیطی تغییر کنه
+api_id = int(os.environ.get("383244"))  # به نام درست متغیر محیطی تغییر کنه
+api_hash = os.environ.get("0abb6c73099af28084bfa507e6f26191")   # به نام درست متغیر محیطی تغییر کنه
 
 # اگر هنوز مقدار None دریافت شد، خطا ایجاد می‌کنه
 if not api_id or not api_hash:
