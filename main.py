@@ -1,7 +1,7 @@
+import os
 from telethon import TelegramClient, functions
 from datetime import datetime
 import time
-import os
 import pytz
 
 # اطلاعات api_id و api_hash از متغیرهای محیطی
@@ -29,9 +29,23 @@ async def update_name():
             print(f"خطا در بروزرسانی پروفایل: {e}")
             time.sleep(60)  # اگه خطا پیش بیاد، 60 ثانیه صبر می‌کنه و دوباره تلاش می‌کنه
 
+async def start_client():
+    try:
+        await client.start()
+        print("اتصال به تلگرام برقرار شد.")
+    except Exception as e:
+        print(f"مشکل در اتصال به تلگرام: {e}")
+        time.sleep(10)  # 10 ثانیه صبر می‌کنه و دوباره تلاش می‌کنه
+        await start_client()  # سعی دوباره برای اتصال
+
 async def main():
-    await client.start()
+    await start_client()  # شروع اتصال
     await update_name()
 
 if __name__ == "__main__":
+    # گرفتن پورت از متغیر محیطی
+    port = os.environ.get("PORT", 5000)  # اگر پورت نبود، 5000 رو پیش‌فرض می‌گیره
+    print(f"Listening on port {port}")
+    
+    # اجرای برنامه در پورت خاص
     client.loop.run_until_complete(main())
